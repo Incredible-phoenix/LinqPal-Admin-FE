@@ -1,72 +1,83 @@
 
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
-import LogoTitle from 'containers/Auth/LogoTitle';
 
 const useStyles = makeStyles(theme => ({
-    container: {
-        paddingLeft: 0,
-        paddingRight: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        minWidth: "80%",
+    root: {
+        position: 'absolute',
+        width: '100vw',
         height: '100vh',
-        backgroundColor: theme.palette.background.main,
-        justifyContent: 'space-around'
-    },
-    mainlayout: {
-        justifyContent: 'center',
+        cursor: 'pointer',
         backgroundColor: theme.palette.background.default,
-        width: theme.spacing(40),
-        minheight: theme.spacing(60),
     },
-}));
-const authPageStyles = makeStyles(theme => ({
-    form: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        marginTop: theme.spacing(3),
-        alignItems: 'center',
-        [theme.breakpoints.down('sm')]: {
-            marginTop: theme.spacing(0),
+    rect: {
+        position: 'absolute',
+        transform: 'translate(-50%, -50%)',
+        left: '50%',
+        top: '50%',
+        width: `calc(100% - ${theme.spacing(4)}px)`,
+        padding: `${theme.spacing(5)}px ${theme.spacing(4)}px`,
+        background: theme.palette.primary.light,
+        boxShadow: theme.shadows[10],
+        borderRadius: theme.spacing(3 / 8),
+        [theme.breakpoints.up('sm')]: {
+            width: 560
         },
     },
-    checkTop: { paddingtop: theme.spacing(2.5) },
-    bottom: {
-        display: 'flex',
-        flexDirection: 'column',
-        paddingBottom: theme.spacing(5),
-        [theme.breakpoints.down('sm')]: {
-            flexDirection: 'row',
-            paddingBottom: theme.spacing(1.5),
-            marginTop: theme.spacing(2),
-            width: '100%',
-            justifyContent: 'space-evenly'
+    smallRect: {
+        [theme.breakpoints.up('sm')]: {
+            width: 360
         },
     },
-    center: {
-        marginTop: theme.spacing(1.5),
-        [theme.breakpoints.down('sm')]: {
-            marginTop: theme.spacing(1.5)
-        },
+    appLogo: {
+        cursor: 'pointer',
+        margin: `0 auto`,
     }
 }));
-const AuthWrapper = ({ children }) => {
+
+const formStyles = makeStyles(theme => ({
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    center: {
+        alignItems: 'center',
+        textAlign: 'center'
+    },
+    topSpacing: {
+        marginTop: theme.spacing(4)
+    },
+    topSmallSpacing: {
+        marginTop: theme.spacing(2)
+    },
+    oneLine: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    rightAlign: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    forgotPassword: {
+        marginTop: theme.spacing(1),
+        marginLeft: 'auto'
+    }
+}));
+
+const AuthWrapper = ({ smallWidth, children, history }) => {
     const classes = useStyles();
 
     return (
-        <Container className={classes.container} maxWidth='sm'>
-            <div className={classes.mainlayout}>
-                <LogoTitle className={classes.logoTitle} />
+        <>
+            <div className={clsx(classes.rect, smallWidth && classes.smallRect)}>
                 {children}
             </div>
-        </Container>
+        </>
     );
 };
 
-export { authPageStyles };
-export default AuthWrapper;
+export { formStyles };
+export default withRouter(AuthWrapper);
