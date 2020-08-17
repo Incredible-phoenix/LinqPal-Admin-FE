@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Typograhpy from '@material-ui/core/Typography';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import TrashIcon from 'components/Icons/TrashIcon';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,8 +42,6 @@ const DeleteButton = props => {
       <Typograhpy variant='body2' className={clsx(classes.label, isHover && classes.hoverColor)}>
         delete
       </Typograhpy>
-      <TrashIcon
-        color={isHover && '#EE2741'} />
     </div>
   );
 }

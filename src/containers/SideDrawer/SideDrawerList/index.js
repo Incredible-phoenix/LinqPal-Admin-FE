@@ -1,12 +1,9 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
 import List from '@material-ui/core/List';
 
 import SideDrawerListItem from './SideDrawerListItem';
-import { CURRENT_USER } from 'api/user/queries';
 
 const SideDrawerList = ({ history, menuItems, selectedIndex, setSelectedIndex }) => {
-  const { data: { currentUser } = {} } = useQuery(CURRENT_USER);
   const onItemClickHandler = index => {
     if (selectedIndex !== index) {
       setSelectedIndex(index)
@@ -15,7 +12,6 @@ const SideDrawerList = ({ history, menuItems, selectedIndex, setSelectedIndex })
     }
   }
 
-  const permissions = ((currentUser || {}).role || {}).permissions || [];
   return (
     <>
       <List>
@@ -24,7 +20,6 @@ const SideDrawerList = ({ history, menuItems, selectedIndex, setSelectedIndex })
           // (role === ROLE_TYPES.SUPER_ADMIN || !item.roles) ?
           (!item.hide) ?
             <SideDrawerListItem
-              permissions={permissions}
               key={index}
               history={history}
               item={item}

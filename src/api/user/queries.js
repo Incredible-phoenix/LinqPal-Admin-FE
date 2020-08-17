@@ -10,6 +10,18 @@ const CURRENT_USER = gql`
     }
   }
 `;
+const USERS = gql`
+  {
+    users {
+      _id
+      email
+      password
+      userName
+      phoneNumber
+      address
+    }
+  }
+`;
 
 const IS_LOGGED_IN = gql`
   query IsUserLoggedIn {
@@ -19,5 +31,6 @@ const IS_LOGGED_IN = gql`
 
 export {
   CURRENT_USER,
-  IS_LOGGED_IN
+  IS_LOGGED_IN,
+  USERS
 };

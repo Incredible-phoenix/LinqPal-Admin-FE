@@ -17,7 +17,7 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : null,
-      'client-name': 'Pronet Admin [web]',
+      'client-name': 'LinqPal [web]',
       'client-version': '1.0.0'
     },
     fetch

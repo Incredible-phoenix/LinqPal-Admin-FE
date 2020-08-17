@@ -55,7 +55,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SideDrawerListItem = ({ history, item, selected, onClick, isSignOut, permissions }) => {
+const SideDrawerListItem = ({ history, item, selected, onClick, isSignOut }) => {
+
   const classes = useStyles();
   const { logOutHandler } = useAuth();
 
@@ -103,11 +104,7 @@ const SideDrawerListItem = ({ history, item, selected, onClick, isSignOut, permi
           <List component='div' disablePadding>
             {item.subItems.map((subItem, index) => {
               const isCurrentMenu = subItem.link === history.location.pathname;
-              // const visible = role === ROLE_TYPES.SUPER_ADMIN || !subItem.roles;
-              const visible = permissions.some(item => (subItem.permissions || []).includes(item));
-              if (!visible) {
-                return null;
-              }
+             
               return (
                 <ListItem
                   className={clsx(classes.subItem, isCurrentMenu && classes.selectedSubItem)}
