@@ -16,6 +16,7 @@ const ForgotPassword = ({ history }) => {
   const [showForgot, setShowForgot] = useState(true);
 
   const submitCallback = () => {
+    setShowForgot(false)
     notifyError("Forget Password");
   };
 

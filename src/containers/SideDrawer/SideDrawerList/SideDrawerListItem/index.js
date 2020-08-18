@@ -10,6 +10,7 @@ import DotIcon from 'components/Icons/DotIcon';
 import ArrowDownIcon from 'components/Icons/ArrowDownIcon';
 import ArrowUpIcon from 'components/Icons/ArrowUpIcon';
 import clsx from 'clsx';
+
 import { useAuth } from 'utils/hooks';
 
 const useStyles = makeStyles(theme => ({
@@ -104,7 +105,7 @@ const SideDrawerListItem = ({ history, item, selected, onClick, isSignOut }) => 
           <List component='div' disablePadding>
             {item.subItems.map((subItem, index) => {
               const isCurrentMenu = subItem.link === history.location.pathname;
-             
+
               return (
                 <ListItem
                   className={clsx(classes.subItem, isCurrentMenu && classes.selectedSubItem)}
