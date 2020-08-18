@@ -4,7 +4,6 @@ import { AppContext } from 'contexts';
 import clsx from 'clsx';
 
 import SideDrawer from 'containers/SideDrawer';
-import TopAppBar from 'containers/TopAppBar';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -41,9 +40,6 @@ const Layout = ({ children }) => {
     return (
         <div className={classes.root}>
             <div className={classes.body}>
-                <TopAppBar
-                    isOpenSidebar={isOpenSidebar}
-                    setOpenSidebar={setOpenSidebar} />
                 <SideDrawer
                     isOpenSidebar={isOpenSidebar}
                     setOpenSidebar={setOpenSidebar} />
